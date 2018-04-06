@@ -1,2 +1,2 @@
 # Projet_TLI
-Projet de Technologie et Langages de l'Internet
+Projet de Technologies et Langages de l'Internet
