@@ -1,0 +1,89 @@
+/* styles généraux */
+body{
+	font-size : 14px;
+}
+
+ul {
+	margin : 0;
+	padding : 0;
+}
+
+nav ul {
+	list-style : none;
+}
+
+nav > ul > li > a {
+	color : #000;
+	cursor : pointer;
+	text-decoration : none;
+}
+
+/* header */
+header {
+	border : 1px solid #000000;
+	height : 100px;
+	margin: 0 0 25px;
+	width: 100%;
+}
+
+/* main */
+main {
+	margin: 0 0 25px;
+}
+
+#left_column {
+	display : inline-block;
+	margin : 0 4% 0 0;
+	vertical-align : top;
+	width : 25%;
+}
+
+#navigation_menu, #login_form {
+	border : 1px solid #000000;
+}
+
+#navigation_menu {
+	margin : 0 0 40px;
+}
+
+#navigation_menu ul > li {
+	padding : 20px 5px;
+}
+
+#navigation_menu li:hover {
+	background : #CCCCCC;
+}
+
+#navigation_menu li.active {
+	background : #DDDDDD;
+}
+
+#navigation_menu ul > li {
+	border-bottom : 1px solid #000000;
+}
+
+#navigation_menu ul > li:last-child {
+	border : none;
+}
+
+#right_column {
+	border : 1px solid #000000;
+	display : inline-block;
+	padding : 20px;
+	vertical-align : top;
+	width : 67%;
+}
+
+
+article img {
+	float : left;
+	margin : 0 20px 20px 0;
+}
+
+#footer_menu {
+	text-align : center;
+}
+
+#footer_menu ul > li {
+	display : inline;
+}
