@@ -1,7 +1,6 @@
 <?php
 	//error_reporting(-1);
 	$pageRoute = $_GET['page'];
-	echo($pageRoute);
 	$route = "/";
 	if(isset($pageRoute) && !empty($pageRoute)) {
 		switch($pageRoute) {
@@ -9,8 +8,8 @@
 				$route .= "accueil";
 				break;
 			}
-			case "critere" : {
-				$route .= "critere";
+			case "criteres" : {
+				$route .= "criteres";
 				break;
 			}
 			case "pathologie" : {
@@ -30,11 +29,9 @@
 			}
 		}
 	}
-	else {
-		echo("accueil");
-	}
 	
-	echo($route);
+	$includeFile = "./src/view".$route.".php";
+	echo($includeFile);
 	
-	phpinfo();
+	include($includeFile);
 ?>
