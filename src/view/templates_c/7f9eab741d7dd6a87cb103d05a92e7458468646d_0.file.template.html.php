@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-04-25 09:38:36
+/* Smarty version 3.1.32, created on 2018-05-02 13:04:29
   from 'C:\wamp\www\Projet_TLI\src\view\template.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5ae04c9c6de222_98114812',
+  'unifunc' => 'content_5ae9b75dd3f525_70816530',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7f9eab741d7dd6a87cb103d05a92e7458468646d' => 
     array (
       0 => 'C:\\wamp\\www\\Projet_TLI\\src\\view\\template.html',
-      1 => 1524648553,
+      1 => 1525266150,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ae04c9c6de222_98114812 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ae9b75dd3f525_70816530 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="fr">
 
@@ -44,16 +44,16 @@ function content_5ae04c9c6de222_98114812 (Smarty_Internal_Template $_smarty_tpl)
             <nav id="navigation_menu">
                 <ul>
                     <li class="active">
-                        <a href="#">Accueil</a>
+                        <a href="accueil.php">Accueil</a>
                     </li>
                     <li>
-                        <a href="#">Recherche par critère</a>
+                        <a href="criteres.php">Recherche par critère</a>
                     </li>
                     <li>
-                        <a href="#">Recherche par pathologie</a>
+                        <a href="pathologie.php">Recherche par pathologie</a>
                     </li>
                     <li>
-                        <a href="#">Informations</a>
+                        <a href="informations.php">Informations</a>
                     </li>
                 </ul>
             </nav>
