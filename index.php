@@ -1,6 +1,7 @@
 <?php
 	//error_reporting(-1);
 	$pageRoute = $_GET['page'];
+	echo($pageRoute);
 	$route = "/";
 	if(isset($pageRoute) && !empty($pageRoute)) {
 		switch($pageRoute) {
@@ -25,7 +26,7 @@
 				break;
 			}
 			default : {
-				$route .= "accueil";
+				$route .= "page-404";
 			}
 		}
 	}
@@ -34,4 +35,6 @@
 	}
 	
 	echo($route);
+	
+	phpinfo();
 ?>
