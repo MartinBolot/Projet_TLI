@@ -1,8 +1,8 @@
 <?php
 	//error_reporting(-1);
-	$pageRoute = $_GET['page'];
+	$pageRoute = isset($_GET['page']) ? $_GET['page'] : null;
 	$route = "/";
-	if(isset($pageRoute) && !empty($pageRoute)) {
+	if($pageRoute != null && !empty($pageRoute)) {
 		switch($pageRoute) {
 			case "accueil" : {
 				$route .= "accueil";
@@ -29,9 +29,12 @@
 			}
 		}
 	}
+	else {
+		$route .= "accueil";
+	}
 	
 	$includeFile = "./src/view".$route.".php";
-	echo($includeFile);
+	//echo($includeFile);
 	
 	include($includeFile);
 ?>
