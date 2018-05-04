@@ -1,3 +1,4 @@
 vendor
 composer.lock
 src/view/templates_c/*
+templates_c/*
