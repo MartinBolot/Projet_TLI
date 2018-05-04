@@ -1,0 +1,12 @@
+#left_column {
+	display : none;
+}
+
+nav {
+	display : none;
+}
+
+header, #right_column {
+	display : bloc;
+	width : auto;
+}
