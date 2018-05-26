@@ -1,6 +1,6 @@
 <?php
-require('vendor/smarty/smarty/libs/Smarty.class.php'); 
-require('./src/model/Database.php'); 
+require_once('vendor/smarty/smarty/libs/Smarty.class.php'); 
+require_once('./src/model/Database.php'); 
 
 
 class FrontEndController
