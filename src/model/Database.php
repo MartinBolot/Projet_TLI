@@ -26,6 +26,14 @@ class Database
 		return $this;
 	}
 
+	public function selectDistinct($fields, $tableName){
+		$fields = implode(",", $fields);
+
+		$this->setQuery("SELECT DISTINCT $fields FROM $tableName");
+
+		return $this;
+	}
+
 	public function where($condition){
 		$this->_q .= " WHERE $condition ;";
 
