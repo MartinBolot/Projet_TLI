@@ -1,0 +1,39 @@
+<script src="/public/js/patho.js"></script>
+
+<hr>
+
+<label for="meridien_filter">Meridien :</label>
+<select id="meridien_filter" onchange="filtrerPathologie();">
+	<option value="">Select a meridien</option>
+	{foreach from=$meridiens item=meridien}
+	<option value="{$meridien['code']}">{$meridien["nom"]}</option>
+	{/foreach}
+</select>
+<label for="type_filter">Type :</label>
+<select id="type_filter" onchange="filtrerPathologie();">
+	<option value="">Select a type</option>
+	{foreach from=$types item=type}
+	<option value="{$type['type']}">{$type["type"]}</option>
+	{/foreach}
+</select>
+
+<hr>
+
+<table style="width:100%" border="1" id="patho_table">
+  <tr>
+    <th>Description</th>
+    <th>Meridien</th>
+    <th>Type</th>
+    <th>Detail</th>
+  </tr>
+  {foreach from=$pathologies item=patho}
+  <tr class="content_tr">
+  	<td>{$patho["description"]}</td>
+    <td class="meridien_td">{$patho["mer"]}</td>
+    <td class="type_td">{$patho["type"]}</td>
+    <td>
+    	<button onclick='displayDetail("{$patho['idP']}");'>Detail</button>
+    </td>
+  </tr>
+  {/foreach}
+</table> 
