@@ -1,0 +1,14 @@
+<table style="width:100%">
+  <tr>
+    <th>Description</th>
+    <th>Meridien</th>
+    <th>Type</th>
+  </tr>
+  {foreach from=$pathologies item=patho}
+  <tr>
+  	<td>{$patho["description"]}</td>
+    <td>{$patho["mer"]}</td>
+    <td>{$patho["type"]}</td>
+  </tr>
+  {/foreach}
+</table> 
