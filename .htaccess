@@ -5,6 +5,9 @@
 
 #Options All -Indexes
 
+AddType text/css .css
+AddType text/javascript .js
+
 ErrorDocument 404 /index.php?page=page-404
 
 RewriteEngine On
