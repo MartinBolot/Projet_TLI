@@ -1,5 +1,5 @@
 <?php
-require('./src/model/Database.php'); 
+require_once('./src/model/Database.php'); 
 
 
 class RestController
@@ -10,8 +10,10 @@ class RestController
 		$this->_db = new Database();
   	}
 
-	public function listPathologie(){
-		
+	public function detailsPathologie($idPatho){
+		$details = $this->_db->getDetails($idPatho)->toArray();
+
+		echo json_encode($details);
 	}
 }
 ?>

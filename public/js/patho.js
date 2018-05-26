@@ -1,6 +1,22 @@
 
-function displayDetail(test){
-	alert(test);
+function displayDetail(idPatho){
+	$.ajax({
+		url: "index.php?page=detail", //TO CHANGE
+		type: 'GET',
+
+		success: function(data) {
+			console.log(data);
+			data=$.parseJSON(data);
+
+			var result = "Symptomes : \n";
+
+			$(data).each(function(i){
+				result += data[i]["description"]+"\n";
+			});
+
+			alert(result);
+        }
+	});
 }
 
 function filtrerPathologie(){
