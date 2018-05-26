@@ -1,7 +1,10 @@
 <?php
 	//error_reporting(-1);
-	include("./src/controller/Controller.php");
-	$controller = new Controller();
+	include("./src/controller/RestController.php");
+	$controllerRest = new RestController();
+
+	include("./src/controller/FrontEndController.php");
+	$controller = new FrontEndController();
 	
 	$pageRoute = isset($_GET['page']) ? $_GET['page'] : null;
 	$route = "/";
@@ -27,6 +30,9 @@
 			case "logout" : {
 				$route .= "logout";
 				break;
+			}
+			case "detail" :{
+				$controllerRest->detailPathologie($id); 
 			}
 			default : {
 				$route .= "page-404";
