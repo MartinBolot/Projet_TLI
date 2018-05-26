@@ -1,11 +1,12 @@
 version: "3.1"
 services:
     www:
-        image: php:7.1.2-apache
+        build:
+            context: /root/www/docker/Apache/
         ports:
-            - "8001:80"
+            - "80:80"
         volumes:
-            - ./www:/var/www/html/
+            - /root/www:/var/www/html/
 
     db:
       image: postgres:9.6-alpine
@@ -26,4 +27,4 @@ services:
         environment:
             - PHP_PG_ADMIN_SERVER_DESC=PostgreSQL
             - PHP_PG_ADMIN_SERVER_PORT=5432
-            - PHP_PG_ADMIN_SERVER_HOST=db 
+            - PHP_PG_ADMIN_SERVER_HOST=db
