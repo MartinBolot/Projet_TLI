@@ -45,6 +45,13 @@ class Database
 		$query->execute();
 		return $query->fetchAll();
 	}
+
+	public function getDetails($idPatho){
+		$this->setQuery("SELECT symptome.description FROM symptome, patho, symptPatho WHERE symptome.idS=symptPatho.idS AND patho.idP=symptPatho.idP AND patho.idP=$idPatho;");
+
+		return $this;
+	}
+
 }
 
 
