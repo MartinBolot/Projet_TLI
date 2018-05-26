@@ -13,9 +13,9 @@ services:
       volumes:
         - .:/application
       environment:
-        - POSTGRES_USER=rootTLI
-        - POSTGRES_PASSWORD=root
-        - POSTGRES_DB=WEBTLI
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=linux
+        - POSTGRES_DB=acu_db
       ports:
         - 5432:5432
 
