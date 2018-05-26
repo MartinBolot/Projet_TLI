@@ -3,55 +3,63 @@
 class Database
 {
 	private $_db;
+	private $_q;
 
 	public function setDb($db){
 		$this->_db = $db;
 	}
 
-	// public function getDb(){
-	// 	return $this->
-	// }
+	public function setQuery($q){
+		$this->_q = $q;
+	}
 
 	public function __construct(){
-		// include 'indent.php';
 		$db =  new PDO('pgsql:host=localhost;dbname=acu_db', 'postgres', 'linux');
 		$this->setDb($db);
   	}
 
-	public function select($tableName, $fields){
+	public function select($fields, $tableName){
 		$fields = implode(",", $fields);
 
-		$q = $this->_db->prepare("SELECT ($fields) FROM $tableName;");
+		$this->setQuery("SELECT $fields FROM $tableName");
 
-		// $q->bindParam(':type', $fields, PDO::PARAM_STR, 12);
-  		// $q->bindValue(':tableName', $tableName, PDO::PARAM_INT);
-		$q->execute();
-
-		return $q;
+		return $this;
 	}
 
 	public function where($condition){
-		$this->_db = $this->_db + 1;
-		echo $this->_db;
+		$this->_q .= " WHERE $condition ;";
+
+		return $this;
 	}
 
-	public function get()
-	{
-
+	public function toArray(){
+		$query = $this->_db->prepare($this->_q);
+		$query->execute();
+		return $query->fetchAll();
 	}
 }
 
-$db = new Database();
-$patho = $db->select("patho", ["idp", "type"])->where(id=10);
 
+
+
+
+
+// $db = new Database();
+// $pathos = $db->select(["idp", "type"], "patho")->where("type = 'me' OR type = 'mi'")->toArray();
+// $pathos = $db->select(["*"], "patho")->toArray();
+
+// foreach ($pathos as $patho) {
+// 	echo $patho["description"]."<br>";
+// }
+// var_dump($patho);
 // var_dump($patho->fetchAll());
 
 // $patho
 
-while ($reponse = $patho->fetch())
-{
-	var_dump($reponse);
-}
+// while ($reponse = $patho->fetch())
+// {
+// 	var_dump($reponse);
+// }
 // foreach ($patho as $test) {
 // 	var_dump($test);
 // 	# code...

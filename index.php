@@ -1,5 +1,8 @@
 <?php
 	//error_reporting(-1);
+	include("./src/controller/Controller.php");
+	$controller = new Controller();
+	
 	$pageRoute = isset($_GET['page']) ? $_GET['page'] : null;
 	$route = "/";
 	if($pageRoute != null && !empty($pageRoute)) {
@@ -13,7 +16,8 @@
 				break;
 			}
 			case "pathologie" : {
-				$route .= "pathologie";
+				// $route .= "pathologie";
+				$controller->listPathologie();
 				break;
 			}
 			case "informations" : {
@@ -33,8 +37,8 @@
 		$route .= "accueil";
 	}
 	
-	$includeFile = "./src/view".$route.".php";
+	// $includeFile = "./src/view".$route.".php";
 	//echo($includeFile);
 	
-	include($includeFile);
+	// include($includeFile);
 ?>
