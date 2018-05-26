@@ -3,7 +3,7 @@ require('vendor/smarty/smarty/libs/Smarty.class.php');
 require('./src/model/Database.php'); 
 
 
-class Controller
+class FrontEndController
 {
 	private $_smarty;
 	private $_db;
