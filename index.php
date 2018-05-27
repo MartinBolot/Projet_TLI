@@ -5,11 +5,16 @@
 
 	include("./src/controller/FrontEndController.php");
 	$controller = new FrontEndController();
-	
-	$pageRoute = isset($_GET['page']) ? $_GET['page'] : null;
+
+	$getPageRoute = isset($_GET['page']) ? $_GET['page'] : null;
+	$getId = isset($_GET['id']) ? $_GET['id'] : null;
 	$route = "/";
-	if($pageRoute != null && !empty($pageRoute)) {
-		switch($pageRoute) {
+
+	//code de réponse http par défaut 200
+	http_response_code(200);
+
+	if($getPageRoute != null && !empty($getPageRoute)) {
+		switch($getPageRoute) {
 			case "accueil" : {
 				$route .= "accueil";
 				break;
@@ -32,8 +37,13 @@
 				break;
 			}
 			case "detail" :{
-			    $idPatho = 4; //TO CHANGE
-				$controllerRest->detailsPathologie(4); 
+				if($getId == null) {
+					$route .= "page-404";
+				}
+				else {
+			    $idPatho = $getId;
+					$controllerRest->detailsPathologie($idPatho);
+				}
 				break;
 			}
 			default : {
@@ -44,9 +54,12 @@
 	else {
 		$route .= "accueil";
 	}
-	
-	// $includeFile = "./src/view".$route.".php";
-	//echo($includeFile);
-	
-	// include($includeFile);
+
+	if($route === "/accueil") {
+		$controller->homePage();
+	}
+	else if($route === "/page-404") {
+		http_response_code(404);
+		$controller->pageNotFound();
+	}
 ?>

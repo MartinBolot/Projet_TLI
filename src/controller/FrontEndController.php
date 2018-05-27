@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/smarty/smarty/libs/Smarty.class.php'); 
-require_once('./src/model/Database.php'); 
+require_once('vendor/smarty/smarty/libs/Smarty.class.php');
+require_once('./src/model/Database.php');
 
 
 class FrontEndController
@@ -27,6 +27,31 @@ class FrontEndController
 		    "types" => $types
 		));
 
+		$this->_smarty->display("src/view/template.html");
+	}
+
+	public function pageNotFound() {
+
+		// Assignation des variables du bloc central
+		$this->_smarty->assign(array(
+		    "titre_page" => "Page 404",
+		    "bloc_central" => "src/view/bloc_central_404.html",
+		    "bloc_indentification" => "src/view/bloc_identification_logedout.html"
+		));
+
+		// On affiche la page d'accueil
+		$this->_smarty->display("src/view/template.html");
+	}
+
+	public function homePage() {
+		// Assignation des variables du bloc central
+		$this->_smarty->assign(array(
+		    "titre_page" => "Accueil",
+		    "bloc_central" => "src/view/bloc_central_accueil.html",
+		    "bloc_indentification" => "src/view/bloc_identification_logedout.html"
+		));
+
+		// On affiche la page d'accueil
 		$this->_smarty->display("src/view/template.html");
 	}
 }
