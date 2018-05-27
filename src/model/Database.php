@@ -47,9 +47,28 @@ class Database
 	}
 
 	public function getDetails($idPatho){
-		$this->setQuery("SELECT symptome.description FROM symptome, patho, symptPatho WHERE symptome.idS=symptPatho.idS AND patho.idP=symptPatho.idP AND patho.idP=$idPatho;");
+		$query = $this->_db->prepare(
+			"SELECT symptome.description
+				FROM symptome, patho, symptPatho
+				WHERE symptome.idS=symptPatho.idS
+					AND patho.idP=symptPatho.idP
+					AND patho.idP=?;"
+		);
 
-		return $this;
+		$query->execute([$idPatho]);
+		$result = $query->fetchAll();
+		return $result;
+	}
+
+	public function getPatho($idPatho) {
+			$query = $this->_db->prepare(
+				"SELECT *
+					FROM patho
+					WHERE patho.idP = ?;"
+			);
+
+			$query->execute([$idPatho]);
+			return $query->fetch();
 	}
 
 }

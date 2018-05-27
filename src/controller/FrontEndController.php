@@ -39,7 +39,7 @@ class FrontEndController
 		    "bloc_indentification" => "src/view/bloc_identification_logedout.html"
 		));
 
-		// On affiche la page d'accueil
+		// On affiche la page
 		$this->_smarty->display("src/view/template.html");
 	}
 
@@ -51,8 +51,31 @@ class FrontEndController
 		    "bloc_indentification" => "src/view/bloc_identification_logedout.html"
 		));
 
-		// On affiche la page d'accueil
+		// On affiche la page
 		$this->_smarty->display("src/view/template.html");
+	}
+
+	public function detailsPathologie($idPatho){
+
+		$patho = $this->_db->getPatho($idPatho);
+		$details = $this->_db->getDetails($idPatho);
+
+		if(is_null($details) || empty($details)) {
+			$this->pageNotFound();
+		}
+		else {
+			// Assignation des variables du bloc central
+			$this->_smarty->assign(array(
+			    "titre_page" => $patho["description"],
+			    "bloc_central" => "src/view/bloc_central_detail.html",
+			    "bloc_indentification" => "src/view/bloc_identification_logedout.html",
+					"details" => $details,
+					"patho" => $patho
+			));
+
+			// On affiche la page
+			$this->_smarty->display("src/view/template.html");
+		}
 	}
 }
 ?>

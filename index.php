@@ -8,7 +8,7 @@
 
 	$getPageRoute = isset($_GET['page']) ? $_GET['page'] : null;
 	$getId = isset($_GET['id']) ? $_GET['id'] : null;
-	$route = "/";
+	$route = "";
 
 	//code de réponse http par défaut 200
 	http_response_code(200);
@@ -16,31 +16,43 @@
 	if($getPageRoute != null && !empty($getPageRoute)) {
 		switch($getPageRoute) {
 			case "accueil" : {
-				$route .= "accueil";
+				$route = "accueil";
 				break;
 			}
 			case "criteres" : {
-				$route .= "criteres";
+				$route = "criteres";
 				break;
 			}
 			case "pathologie" : {
-				// $route .= "pathologie";
+				$route = "pathologie";
 				$controller->listPathologie();
 				break;
 			}
 			case "informations" : {
-				$route .= "informations";
+				$route = "informations";
 				break;
 			}
 			case "logout" : {
-				$route .= "logout";
+				$route = "logout";
 				break;
 			}
 			case "detail" :{
-				if($getId == null) {
-					$route .= "page-404";
+				if(is_null($getId)) {
+					$route = "page-404";
 				}
 				else {
+					$route = "detail";
+			    $idPatho = $getId;
+					$controller->detailsPathologie($idPatho);
+				}
+				break;
+			}
+			case "api" :{
+				if(is_null($getId)) {
+					$route = "page-404";
+				}
+				else {
+					$route = "detail";
 			    $idPatho = $getId;
 					$controllerRest->detailsPathologie($idPatho);
 				}
@@ -52,13 +64,13 @@
 		}
 	}
 	else {
-		$route .= "accueil";
+		$route = "accueil";
 	}
 
-	if($route === "/accueil") {
+	if($route === "accueil") {
 		$controller->homePage();
 	}
-	else if($route === "/page-404") {
+	else if($route === "page-404") {
 		http_response_code(404);
 		$controller->pageNotFound();
 	}
