@@ -1,5 +1,5 @@
 <?php
-require_once('./src/model/Database.php'); 
+require_once('./src/model/Database.php');
 
 
 class RestController
@@ -11,7 +11,7 @@ class RestController
   	}
 
 	public function detailsPathologie($idPatho){
-		$details = $this->_db->getDetails($idPatho)->toArray();
+		$details = $this->_db->getDetails($idPatho);
 
 		echo json_encode($details);
 	}
