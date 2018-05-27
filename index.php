@@ -32,7 +32,9 @@
 				break;
 			}
 			case "detail" :{
-				$controllerRest->detailPathologie($id); 
+			    $idPatho = 4; //TO CHANGE
+				$controllerRest->detailsPathologie(4); 
+				break;
 			}
 			default : {
 				$route .= "page-404";
