@@ -47,6 +47,12 @@
 				}
 				break;
 			}
+			case "creer-compte" : {
+				$route = "creer-compte";
+				$controller->creerCompte();
+			}
+
+			// gestion de l'api
 			case "api" :{
 				if(is_null($getId)) {
 					$route = "page-404";
