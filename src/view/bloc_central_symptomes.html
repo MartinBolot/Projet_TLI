@@ -1,0 +1,23 @@
+<script src="/public/js/symtomes.js"></script>
+
+<hr>
+
+<label for="keyword">Mot clé :</label>
+<input type="text" id="keyword" onkeyup="searchSymptome();">
+
+<hr>
+
+<table style="width:100%" border="1" id="sympto_table">
+  <tr>
+    <th>Description</th>
+    <th>Meridien</th>
+    <th>Type</th>
+  </tr>
+  {foreach from=$pathologies item=patho}
+  <tr class="content_tr">
+  	<td>{$patho["description"]}</td>
+    <td class="meridien_td">{$patho["mer"]}</td>
+    <td class="type_td">{$patho["type"]}</td>
+  </tr>
+  {/foreach}
+</table> 
