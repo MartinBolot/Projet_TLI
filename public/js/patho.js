@@ -1,11 +1,14 @@
-
+/**
+  * displayDetail
+  * Ajax call used to gather symptomes for a given patho id
+  *
+*/
 function displayDetail(idPatho){
 	$.ajax({
-		url: "index.php?page=detail", //TO CHANGE
+		url: "index.php?api=detail&id="+idPatho, //TO CHANGE
 		type: 'GET',
 
 		success: function(data) {
-			console.log(data);
 			data=$.parseJSON(data);
 
 			var result = "Symptomes : \n";
@@ -19,6 +22,11 @@ function displayDetail(idPatho){
 	});
 }
 
+/**
+  * filtrerPathologie
+  * Function triggered when the user choose an option in the filters, it parses the table and filter out the row
+  *
+*/
 function filtrerPathologie(){
 	var type = $("#type_filter option:selected").val();
 	var meridien = $("#meridien_filter option:selected").val();
