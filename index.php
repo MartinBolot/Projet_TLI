@@ -49,8 +49,8 @@
 				$route = "criteres";
 				break;
 			}
-			case "pathologie" : {
-				$route = "pathologie";
+			case "pathologies" : {
+				$route = "pathologies";
 				$controller->listPathologie();
 				break;
 			}

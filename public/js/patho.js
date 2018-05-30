@@ -5,7 +5,7 @@
 */
 function displayDetail(idPatho){
 	$.ajax({
-		url: "index.php?api=detail&id="+idPatho, //TO CHANGE
+		url: "index.php?api=details&id="+idPatho, //TO CHANGE
 		type: 'GET',
 
 		success: function(data) {
@@ -17,7 +17,12 @@ function displayDetail(idPatho){
 				result += data[i]["description"]+"\n";
 			});
 
+			console.log(result);
 			alert(result);
+		},
+
+		error: function(error) {
+			console.log(error);
 		}
 	});
 }
