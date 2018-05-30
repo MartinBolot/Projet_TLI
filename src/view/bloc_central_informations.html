@@ -1,0 +1,51 @@
+<p>
+Nous avons décidé de créer notre site sans utiliser de Framework (ni php, ni css). 
+La partie statique à été réalisée à l'aide d'HTML + CSS, tandis que le dynamisme est apporté par du javascript et du php.
+L'utilisation du moteur de template Smarty nous a permis de découpler nos pages HTML de notre code PHP.
+Pour la base de données, notre choix s'est porté vers le SGBD PostgreSQL.
+Nous avons mis en place un système de redirection d'URL et nous avons un accès unique au site via index.php.
+</p>
+<p>
+Nous avions décidé de monter une machine virtuelle de développement (non rendue avec ce site) afin de faciliter nos développements et nos tests.
+Cette vm n'a pas servit pour la mise en place de l'architecture réseau, mais pour les développements. 
+Elle nous a permis de décider quels éléments devraient être installés sur la VM finale rendue. 
+</p>
+<p>
+
+L'infrastructure docker se présente de la manière suivante, trois Dockers sont en place sur la VM :
+	
+<ul>
+
+    <li>Docker custom Apache + php : assumera le rôle d’hébergeur du site WEB.</li>
+	
+	<li>Docker postgres : il s’agit du SGBD choisit pour ce projet, sur ce Docker sera posté notre base de données 
+	avec toutes les données brutes des pathologies.</li>
+	
+	<li>Docker pgmyadmin : ce Docker contient le système de gestion de base de données en mode graphique, ici phppgmyadmin
+	 car nous utilisons une base postgres.</li>
+
+</ul>
+Nous avons mis en place un script en shell qui sera exécuté au démarrage de la VM. Ce dernier aura pour taches d'initialiser l'infrastructure.
+Cela se traduit par le lancement des différents Dockers, s’ils sont présents sur la machine. Dans le cas contraire, il sera chargé de 
+réinstaller ces derniers pour ensuite les lancer. Nous avons mis en place ceci dans le but de fournir un environnement opérationnel et fonctionnel 
+dès le lancement de la VM. 
+</p>
+<p>
+Sources :
+    
+<ul>
+
+    <li>https://openclassrooms.com/</li>
+	
+	<li>https://www.w3.org/</li>
+	
+	<li>https://validator.w3.org/</li>
+    
+    <li>https://css-tricks.com/</li>
+    
+    <li>http://bruno.mascret.fr/</li>
+    
+    <li>https://fr.wikipedia.org/</li>
+
+</ul>
+</p>
