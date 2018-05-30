@@ -1,3 +1,12 @@
+$(document).ready(function() {
+	$("a.detail_link").each(function(el) {
+		$(this).click(function(e) {
+			e.preventDefault();
+			displayDetail($(this).attr("id"));
+		});
+	});
+});
+
 /**
   * displayDetail
   * Ajax call used to gather symptomes for a given patho id
@@ -5,20 +14,21 @@
 */
 function displayDetail(idPatho){
 	$.ajax({
-		url: "index.php?api=details&id="+idPatho, //TO CHANGE
+		url: "/api/details/"+idPatho, //TO CHANGE
 		type: 'GET',
 
 		success: function(data) {
 			data=$.parseJSON(data);
 
 			var result = "Symptomes : \n";
+			var div = document.getElementById("detail_display");
 
 			$(data).each(function(i){
 				result += data[i]["description"]+"\n";
 			});
 
 			console.log(result);
-			alert(result);
+			div.innerHTML = result;
 		},
 
 		error: function(error) {

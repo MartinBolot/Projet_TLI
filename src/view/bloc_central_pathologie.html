@@ -18,7 +18,7 @@
 </select>
 
 <hr>
-
+<div id="detail_display"></div>
 <table style="width:100%" border="1" id="patho_table">
   <tr>
     <th>Description</th>
@@ -32,8 +32,8 @@
     <td class="meridien_td">{$patho["mer"]}</td>
     <td class="type_td">{$patho["type"]}</td>
     <td>
-    	<button onclick="displayDetail({$patho['idp']});">Detail</button>
+    	<a class="detail_link" id="{$patho['idp']}" href="/detail/{$patho['idp']}">Detail</button>
     </td>
   </tr>
   {/foreach}
-</table> 
+</table>
