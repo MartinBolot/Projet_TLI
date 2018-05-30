@@ -55,6 +55,11 @@
 				$controller->listPathologie();
 				break;
 			}
+			case "symptomes" : {
+				$route = "symptomes";
+				$controller->listSymptomes();
+				break;
+			}
 			case "informations" : {
 				$route = "informations";
 				$controller->informationsPage();
