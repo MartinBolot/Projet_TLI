@@ -30,6 +30,19 @@ class FrontEndController
 		$this->_smarty->display("src/view/template.html");
 	}
 
+	public function listSymptomes(){
+		$pathos = $this->_db->select(["*"], "patho")->toArray();
+
+		$this->_smarty->assign(array(
+		    "titre_page" => "recherche par mot clés",
+		    "bloc_central" => "src/view/bloc_central_symptomes.html",
+		    "bloc_indentification" => "src/view/bloc_identification_logedout.html",
+		    "pathologies" => $pathos
+		));
+
+		$this->_smarty->display("src/view/template.html");
+	}
+
 	public function creerCompte() {
 		$this->displayContentPage(
 			"Créer un compte",
