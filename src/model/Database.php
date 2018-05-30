@@ -74,22 +74,15 @@ class Database
 }
 
 
-
-
-
-
 // $db = new Database();
 // $pathos = $db->select(["idp", "type"], "patho")->where("type = 'me' OR type = 'mi'")->toArray();
 // $pathos = $db->select(["*"], "patho")->toArray();
-
 // foreach ($pathos as $patho) {
 // 	echo $patho["description"]."<br>";
 // }
 // var_dump($patho);
 // var_dump($patho->fetchAll());
-
 // $patho
-
 // while ($reponse = $patho->fetch())
 // {
 // 	var_dump($reponse);
@@ -98,21 +91,12 @@ class Database
 // 	var_dump($test);
 // 	# code...
 // }
-
-
-
-
 // <?php
-
 // $data = ['a'=>'foo','b'=>'bar'];
-
 // $keys = array_keys($data);
 // $fields = '`'.implode('`, `',$keys).'`';
-
 // #here is my way
 // $placeholder = substr(str_repeat('?,',count($keys)),0,-1);
-
 // $pdo->prepare("INSERT INTO `baz`($fields) VALUES($placeholder)")->execute(array_values($data));
-
 
 ?>

@@ -19,7 +19,7 @@ class FrontEndController
 		$types = $this->_db->selectDistinct(["type"], "patho")->toArray();
 
 		$this->_smarty->assign(array(
-		    "titre_page" => "Recherche par pathologie",
+		    "titre_page" => "recherche par critères",
 		    "bloc_central" => "src/view/bloc_central_pathologie.html",
 		    "bloc_indentification" => "src/view/bloc_identification_logedout.html",
 		    "pathologies" => $pathos,
@@ -102,6 +102,18 @@ class FrontEndController
 			// On affiche la page
 			$this->_smarty->display($template);
 
+	}
+	
+	// api
+	public function getApi() {
+		?>
+		<pre style="word-wrap: break-word; white-space: pre-wrap;">
+			{
+				"detailsPathologie" : "api/details/{id}",
+				"getPatho" : api/pathologie/{id}
+			}
+		</pre>
+		<?php
 	}
 }
 ?>

@@ -87,12 +87,12 @@ main {
 	width : 66.5%;
 }
 
-#right_column h1 {
-	text-transform: capitalize;
+#right_column h1::first-letter {
+	text-transform: uppercase;
 }
 
 #right_column ul {
-	margin : 0 0 0 30px; 
+	margin : 0 0 0 30px;
 }
 
 #right_column img {
