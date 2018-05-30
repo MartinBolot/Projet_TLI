@@ -15,7 +15,7 @@ function displayDetail(idPatho){
 			});
 
 			alert(result);
-        }
+		}
 	});
 }
 

@@ -7,14 +7,40 @@
 	$controller = new FrontEndController();
 
 	$getPageRoute = isset($_GET['page']) ? $_GET['page'] : null;
+	$getAPIRoute = isset($_GET['api']) ? $_GET['api'] : null;
 	$getId = isset($_GET['id']) ? $_GET['id'] : null;
 	$route = "";
+	$API = "";
 
 	//code de réponse http par défaut 200
 	http_response_code(200);
 
 	if($getPageRoute != null && !empty($getPageRoute)) {
-		switch($getPageRoute) {
+		$route = setRoute($getPageRoute, $getId, $controller);
+	}
+	else if($getAPIRoute != null && !empty($getAPIRoute)) {
+		$API = setAPI($getAPIRoute, $getId, $controllerRest);
+	}
+	else {
+		$route = "accueil";
+	}
+
+	if($route === "accueil") {
+		$controller->homePage();
+	}
+	else if($route === "page-404" || $API === "page-404") {
+		http_response_code(404);
+		if($route === "page-404") {
+			$controller->pageNotFound();
+		}
+		else if($API === "page-404") {
+			$controllerRest->pageNotFound();
+		}
+	}
+
+	function setRoute($getRoute, $id, $controller) {
+		$route = "";
+		switch($getRoute) {
 			case "accueil" : {
 				$route = "accueil";
 				break;
@@ -38,12 +64,12 @@
 				break;
 			}
 			case "detail" :{
-				if(is_null($getId)) {
+				if(is_null($id)) {
 					$route = "page-404";
 				}
 				else {
 					$route = "detail";
-			    $idPatho = $getId;
+			    $idPatho = $id;
 					$controller->detailsPathologie($idPatho);
 				}
 				break;
@@ -53,33 +79,49 @@
 				$controller->creerCompte();
 				break;
 			}
+			case "api" : {
+				$route = "api";
+				$controller->getApi();
+				break;
+			}
+			default : {
+				$route = "page-404";
+			}
+		}
+		return $route;
+	}
 
-			// gestion de l'api
-			case "api" :{
-				if(is_null($getId)) {
-					$route = "page-404";
+	// gestion de l'api
+	function setAPI($getAPI, $id, $controller) {
+		$api = "";
+		switch($getAPI) {
+			case "details" : {
+				if(is_null($id)) {
+					$api = "page-404";
 				}
 				else {
-					$route = "detail";
-			    $idPatho = $getId;
-					$controllerRest->detailsPathologie($idPatho);
+					$api = "details";
+					$idPatho = $id;
+					$controller->detailsPathologie($idPatho);
+				}
+				break;
+			}
+			case "pathologie" : {
+				if(is_null($id)) {
+					$api = "page-404";
+				}
+				else {
+					$api = "pathologie";
+					$idPatho = $id;
+					$controller->getPatho($idPatho);
 				}
 				break;
 			}
 			default : {
-				$route .= "page-404";
+				$api = "page-404";
 			}
 		}
-	}
-	else {
-		$route = "accueil";
+		return $api;
 	}
 
-	if($route === "accueil") {
-		$controller->homePage();
-	}
-	else if($route === "page-404") {
-		http_response_code(404);
-		$controller->pageNotFound();
-	}
 ?>

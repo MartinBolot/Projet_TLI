@@ -9,10 +9,22 @@ ErrorDocument 404 /index.php?page=page-404
 RewriteEngine On
 RewriteBase /
 
+#API Id
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^api/(.*)/([0-9]*)$ index.php?api=$1&id=$2&%{QUERY_STRING} [NC,L]
+
+#API
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^api/(.*)$ index.php?api=$1&%{QUERY_STRING} [NC,L]
+
+#Page Id
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)/([0-9]*)$ index.php?page=$1&id=$2&%{QUERY_STRING} [NC,L]
 
+#Page
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?page=$1&%{QUERY_STRING} [NC,L]
