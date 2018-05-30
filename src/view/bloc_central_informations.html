@@ -11,9 +11,8 @@ Cette vm n'a pas servit pour la mise en place de l'architecture réseau, mais po
 Elle nous a permis de décider quels éléments devraient être installés sur la VM finale rendue.
 </p>
 <p>
-
 L'infrastructure docker se présente de la manière suivante, trois Dockers sont en place sur la VM :
-
+</p>
 <ul>
 
     <li>Docker custom Apache + php : assumera le rôle d’hébergeur du site WEB.</li>
@@ -25,6 +24,7 @@ L'infrastructure docker se présente de la manière suivante, trois Dockers sont
 	 car nous utilisons une base postgres.</li>
 
 </ul>
+<p>
 Nous avons mis en place un script en shell qui sera exécuté au démarrage de la VM. Ce dernier aura pour taches d'initialiser l'infrastructure.
 Cela se traduit par le lancement des différents Dockers, s’ils sont présents sur la machine. Dans le cas contraire, il sera chargé de
 réinstaller ces derniers pour ensuite les lancer. Nous avons mis en place ceci dans le but de fournir un environnement opérationnel et fonctionnel
@@ -32,7 +32,7 @@ dès le lancement de la VM.
 </p>
 <p>
 Sources :
-
+</p>
 <ul>
 
     <li>
@@ -96,4 +96,3 @@ Sources :
 			</li>
 
 </ul>
-</p>
