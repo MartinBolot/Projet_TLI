@@ -8,17 +8,21 @@ function searchSymptome(){
 			type: 'GET',
 
 			success: function(data) {
-				if (isEmpty(data)) {
-					result = "No result...";
+				if (data == "[]") {
+					result ='<tr><th>Description</th><th>Meridien</th><th>Type</th></tr><tr class="content_tr">\
+						  	<td>No result..</td>\
+						    <td class="meridien_td">No result..</td>\
+						    <td class="type_td">No result..</td>\
+						  </tr>';
 				}
 				else{
 					data=$.parseJSON(data);
-					result="";
+					result="<tr><th>Description</th><th>Meridien</th><th>Type</th></tr>";
 					$(data).each(function(i){
 						result += '<tr class="content_tr">\
-						  	<td>'+$data[i]["description"]+'</td>\
-						    <td class="meridien_td">'+$data[i]["mer"]+'</td>\
-						    <td class="type_td">'+$data[i]["type"]+'</td>\
+						  	<td>'+data[i]["description"]+'</td>\
+						    <td class="meridien_td">'+data[i]["mer"]+'</td>\
+						    <td class="type_td">'+data[i]["type"]+'</td>\
 						  </tr>';
 					});
 				}
@@ -26,6 +30,15 @@ function searchSymptome(){
 			}
 		});
 	}
+	else{
+		$("#sympto_table").html(' <tr><th>Description</th><th>Meridien</th><th>Type</th></tr><tr class="content_tr">\
+						  	<td>Type 3 letters..</td>\
+						    <td class="meridien_td">Type 3 letters..</td>\
+						    <td class="type_td">Type 3 letters..</td>\
+						  </tr>'
+			);
+	}
+
 }
 
 function isEmpty(obj) {

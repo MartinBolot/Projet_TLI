@@ -14,7 +14,7 @@ $(document).ready(function() {
 */
 function displayDetail(idPatho){
 	$.ajax({
-		url: "/api/details/"+idPatho, //TO CHANGE
+		url: "/api/details/"+idPatho,
 		type: 'GET',
 
 		success: function(data) {
