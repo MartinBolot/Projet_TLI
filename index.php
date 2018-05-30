@@ -9,6 +9,7 @@
 	$getPageRoute = isset($_GET['page']) ? $_GET['page'] : null;
 	$getAPIRoute = isset($_GET['api']) ? $_GET['api'] : null;
 	$getId = isset($_GET['id']) ? $_GET['id'] : null;
+	$getKeyWord = isset($_GET['keyword']) ? $_GET['keyword'] : null;
 	$route = "";
 	$API = "";
 
@@ -19,7 +20,7 @@
 		$route = setRoute($getPageRoute, $getId, $controller);
 	}
 	else if($getAPIRoute != null && !empty($getAPIRoute)) {
-		$API = setAPI($getAPIRoute, $getId, $controllerRest);
+		$API = setAPI($getAPIRoute, $getId, $getKeyWord, $controllerRest);
 	}
 	else {
 		$route = "accueil";
@@ -92,7 +93,7 @@
 	}
 
 	// gestion de l'api
-	function setAPI($getAPI, $id, $controller) {
+	function setAPI($getAPI, $id, $keyword, $controller) {
 		$api = "";
 		switch($getAPI) {
 			case "details" : {
@@ -114,6 +115,16 @@
 					$api = "pathologie";
 					$idPatho = $id;
 					$controller->getPatho($idPatho);
+				}
+				break;
+			}
+			case "criteres" : {
+				if(is_null($keyword)) {
+					$api = "page-404";
+				}
+				else {
+					$api = "criteres";
+					$controller->getPathosFromKeyword($keyword);
 				}
 				break;
 			}

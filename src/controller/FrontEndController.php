@@ -103,14 +103,15 @@ class FrontEndController
 			$this->_smarty->display($template);
 
 	}
-	
+
 	// api
 	public function getApi() {
 		?>
 		<pre style="word-wrap: break-word; white-space: pre-wrap;">
 			{
 				"detailsPathologie" : "api/details/{id}",
-				"getPatho" : api/pathologie/{id}
+				"getPatho" : api/pathologie/{id},
+				"getPathosFromKeyword" : api/criteres/{keyword}
 			}
 		</pre>
 		<?php

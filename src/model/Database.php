@@ -71,6 +71,21 @@ class Database
 			return $query->fetch();
 	}
 
+	public function getPathosFromKeyword($keyword) {
+			$query = $this->_db->prepare(
+				"SELECT *
+					FROM patho p
+						JOIN symptPatho sp ON sp.idP = p.idP
+						JOIN symptome s ON s.idS = sp.idS
+						JOIN keySympt ks ON ks.idS = s.idS
+						JOIN keywords k ON k.idK = ks.idK
+					WHERE k.name LIKE '%?%';"
+			);
+
+			$query->execute([$keyword]);
+			return $query->fetchAll();
+	}
+
 }
 
 
