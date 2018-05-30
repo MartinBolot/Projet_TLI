@@ -11,7 +11,7 @@ class FrontEndController
 	public function __construct(){
 		$this->_smarty = new Smarty();
 		$this->_db = new Database();
-  	}
+	}
 
 	public function listPathologie(){
 		$pathos = $this->_db->select(["*"], "patho")->toArray();
@@ -34,6 +34,14 @@ class FrontEndController
 		$this->displayContentPage(
 			"Créer un compte",
 			"src/view/bloc_central_creer-compte.html",
+			"src/view/bloc_identification_logedout.html"
+		);
+	}
+
+	public function informationsPage() {
+		$this->displayContentPage(
+			"Informations",
+			"src/view/bloc_central_informations.html",
 			"src/view/bloc_identification_logedout.html"
 		);
 	}

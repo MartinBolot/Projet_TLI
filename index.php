@@ -30,6 +30,7 @@
 			}
 			case "informations" : {
 				$route = "informations";
+				$controller->informationsPage();
 				break;
 			}
 			case "logout" : {
@@ -50,6 +51,7 @@
 			case "creer-compte" : {
 				$route = "creer-compte";
 				$controller->creerCompte();
+				break;
 			}
 
 			// gestion de l'api
