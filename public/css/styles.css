@@ -114,9 +114,12 @@ main {
 	margin : 0 20px 0;
 }
 
-#patho_table {
+#patho_table, #sympto_table {
 	border : 1px solid #000;
 	width:100%;
+}
+#patho_table td, #sympto_table td {
+	border : 1px solid #000;
 }
 
 /* media queries */
